@@ -27,6 +27,31 @@ namespace Day01
             Console.ReadKey();
         }
 
+        static void MyFavoriteNumber(out int myNum)
+        {
+            Console.Write("What is your favorite number? ");
+            string numberStr = Console.ReadLine();
+            //try
+            //{
+            //    myNum = int.Parse(numberStr);//can throw an exception
+            //}
+            //catch (Exception)
+            //{
+            //    myNum = 0;
+            //}
+
+            //OR use int.TryParse which does NOT throw exception
+            bool isNumber = int.TryParse(numberStr, out myNum);
+            if (isNumber)
+            {
+                Console.WriteLine("Thank you for entering a number.");
+            }
+            else
+            {
+                Console.WriteLine("Thanks a lot Steev!");
+            }
+        }
+
         static void CurveGrade(int grade, int curve, out int curvedGrade)
         {
             //curvedGrade = grade + curve;
