@@ -24,6 +24,9 @@ namespace Day01
 
             CurveGrade(grade, 5, out int newGrade);
             Console.WriteLine($"{grade} was curved to {newGrade}.");
+
+            MyFavoriteNumber(out int myFave);
+            Console.WriteLine($"Your favorite number is {myFave}. Weird.");
             Console.ReadKey();
         }
 
