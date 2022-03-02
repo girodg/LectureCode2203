@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Day02
 {
@@ -10,6 +11,9 @@ namespace Day02
         static void Main(string[] args)
         {
             string[] names = new string[] { "Batman", "Joker", "Superman" };
+            List<string> DC = names.ToList();//1) call ToList
+            DC = new List<string>(names);//2) pass the array to the list constructor
+
             ArrayChallenge();
 
             List<bool> flag = new List<bool>(10);// { true, true, false };
@@ -76,10 +80,25 @@ namespace Day02
             int numDropped = DropFailing(grades);
             Console.WriteLine($"Number of students dropped: {numDropped}");
             PrintGrades(grades);
+            List<double> newGrades = CurveGrades(grades);
+            PrintGrades(newGrades);
+        }
+
+        static List<double> CurveGrades(List<double> grades)
+        {
+            List<double> curved = grades.ToList();//clone the original
+            for (int i = 0; i < curved.Count; i++)
+            {
+                if (curved[i] < 95) curved[i] += 5;
+                else curved[i] = 100;
+            }
+            return curved;
         }
 
         static int DropFailing(List<double> grades)
         {
+            List<double> course = grades.ToList();//will this make a new list?
+            course = new List<double>(grades);
             int numFailed = 0;
             //for (int i = 0; i < grades.Count; i++)
             //{
