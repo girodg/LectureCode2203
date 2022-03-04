@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace Day03
 {
@@ -101,6 +102,27 @@ namespace Day03
                 Console.WriteLine($"{menuItem} now costs {menu[menuItem]}. Thanks Canada.");
             }
             #endregion
+            #region Challenge 4
+            CurveStudent(pg2);
+
+            PrintGrades(new Dictionary<string,double>(pg2.OrderByDescending(k => k.Value)));
+            #endregion
+        }
+
+        private static void CurveStudent(Dictionary<string, double> pg2)
+        {
+            Console.WriteLine("-----------CURVING STUDENT------------");
+            Console.Write("Enter the student's name: ");
+            string student = Console.ReadLine();
+            if (pg2.TryGetValue(student, out double grade))
+            {
+                //? - ternary operator
+                grade = (grade < 95) ? grade + 5 : 100;
+                pg2[student] = grade;//overwrite the old value
+                Console.WriteLine($"{student} was curved to {grade}.");
+            }
+            else
+                Console.WriteLine($"{student} evaded correction.");
         }
 
         private static void DropStudent(Dictionary<string, double> pg2)
