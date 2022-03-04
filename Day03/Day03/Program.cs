@@ -71,6 +71,16 @@ namespace Day03
 
             PrintGrades(pg2);
             #endregion
+
+            #region Removing
+            Console.WriteLine("-------REMOVING ITEMS--------");
+            string itemToRemove = "Chicken Nuggets";
+            bool wasRemoved = menu.Remove(itemToRemove);
+            if(wasRemoved)
+                Console.WriteLine($"{itemToRemove} was removed.");
+            else
+                Console.WriteLine($"{itemToRemove} was not found.");
+            #endregion
         }
 
         static void PrintGrades(Dictionary<string, double> grades)
