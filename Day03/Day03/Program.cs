@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Day03
 {
@@ -34,9 +35,9 @@ namespace Day03
             #endregion
 
             #region Looping
-            foreach (var menuItem in menu)
+            foreach (var menuitem in menu)
             {
-                Console.WriteLine($"{menuItem.Value,10:C2} {menuItem.Key}");
+                Console.WriteLine($"{menuitem.Value,10:C2} {menuitem.Key}");
             }
             #endregion
 
@@ -81,6 +82,37 @@ namespace Day03
             else
                 Console.WriteLine($"{itemToRemove} was not found.");
             #endregion
+
+            #region Challenge 3
+            DropStudent(pg2);
+            #endregion
+
+            #region Checking Keys, Getting Values
+            string menuItem = "Frenchy Fries";
+            if (menu.ContainsKey(menuItem))
+            {
+                float price = menu[menuItem];
+                Console.WriteLine($"{menuItem} costs {price}");
+            }
+            //OR use TryGetValue
+            if (menu.TryGetValue(menuItem, out float menuPrice))
+            {
+                menu[menuItem] = menuPrice + 2;
+                Console.WriteLine($"{menuItem} now costs {menu[menuItem]}. Thanks Canada.");
+            }
+            #endregion
+        }
+
+        private static void DropStudent(Dictionary<string, double> pg2)
+        {
+            Console.WriteLine("-----------DROPPING STUDENT------------");
+            Console.Write("Enter the student's name: ");
+            string student = Console.ReadLine();
+            bool wasDropped = pg2.Remove(student);
+            if(wasDropped)
+                Console.WriteLine($"{student} was eliminated.");
+            else
+                Console.WriteLine($"{student} evaded detection.");
         }
 
         static void PrintGrades(Dictionary<string, double> grades)
