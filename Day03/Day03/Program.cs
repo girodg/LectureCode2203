@@ -64,7 +64,32 @@ namespace Day03
             pg2["Isobel"] = GetGrade();
             pg2["Japhet"] = GetGrade();
             pg2["Tyler"] = GetGrade();
+
             #endregion
+
+            #region Challenge 2
+
+            PrintGrades(pg2);
+            #endregion
+        }
+
+        static void PrintGrades(Dictionary<string, double> grades)
+        {
+            Console.ReadKey();
+            Console.WriteLine("-------------GRADES-----------");
+            foreach (var student in grades)
+            {
+                double grade = student.Value;
+                if (grade < 59.5)      Console.BackgroundColor = ConsoleColor.Red;
+                else if (grade < 69.5) Console.ForegroundColor = ConsoleColor.DarkYellow;
+                else if (grade < 79.5) Console.ForegroundColor = ConsoleColor.Yellow;
+                else if (grade < 89.5) Console.ForegroundColor = ConsoleColor.DarkCyan;
+                else                   Console.ForegroundColor = ConsoleColor.Green;
+
+                Console.Write($"{student.Value,10:N2}");
+                Console.ResetColor();
+                Console.WriteLine($" {student.Key}");
+            }
         }
 
         static double GetGrade()
