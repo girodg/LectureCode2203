@@ -1,9 +1,21 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
 namespace Day04
 {
+    enum Superpowers
+    {
+        Speed = 1, LaserVision, Fly, Strength, Money, Invisibility, Telepathy, Swimming, Swinging
+    }
+    class Superhero
+    {
+        public string Name { get; set; }
+        public string SecretIdentity { get; set; }
+        public Superpowers Powers { get; set; }
+    }
+
     internal class Program
     {
         static void Main(string[] args)
@@ -45,6 +57,26 @@ namespace Day04
 
             fileName = "bats.csv";
             ReadData(fileName);
+            #endregion
+
+            #region Serializing
+            List<Superhero> heroes = new List<Superhero>();
+            heroes.Add(new Superhero() { Name = "Batman", SecretIdentity = "Bruce Wayne", Powers = Superpowers.Money });
+            heroes.Add(new Superhero() { Name = "Superman", SecretIdentity = "Clark Kent", Powers = Superpowers.Fly });
+            heroes.Add(new Superhero() { Name = "Wonder Woman", SecretIdentity = "Diana Prince", Powers = Superpowers.Strength });
+            heroes.Add(new Superhero() { Name = "Aquaman", SecretIdentity = "Arthur Curry", Powers = Superpowers.Swimming });
+            heroes.Add(new Superhero() { Name = "Spiderman", SecretIdentity = "Miles Morales", Powers = Superpowers.Swinging });
+
+            fileName = Path.ChangeExtension(fileName, ".json");
+            using (StreamWriter sw = new StreamWriter(fileName))
+            {
+                using (JsonTextWriter jtw = new JsonTextWriter(sw))
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    serializer.Formatting = Formatting.Indented;
+                    serializer.Serialize(jtw, heroes);
+                }
+            }
             #endregion
         }
 
