@@ -78,6 +78,29 @@ namespace Day04
                 }
             }
             #endregion
+
+            #region Deserializing
+            if (File.Exists(fileName))
+            {
+                string jsonText = File.ReadAllText(fileName);
+                try
+                {
+                    List<Superhero> jL2 = JsonConvert.DeserializeObject<List<Superhero>>(jsonText);
+                    foreach (Superhero hero in jL2)
+                    {
+                        Console.WriteLine($"I am {hero.Name} ({hero.SecretIdentity}) and I'm good at {hero.Powers}.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            else
+            {
+                Console.WriteLine($"{fileName} does not exists.");
+            }
+            #endregion
         }
 
         static void ReadData(string filePath)
