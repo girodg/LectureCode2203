@@ -13,6 +13,7 @@ namespace Day05
             //Method(5);
             int bound = Math.Min(Console.WindowHeight, Console.WindowWidth);
             int x1 = 0, y1 = 0;
+
             Boxes(x1, y1, bound - 1, bound / 2);
 
             Console.ResetColor();
@@ -23,13 +24,16 @@ namespace Day05
         static Random randy = new Random();
         private static void Boxes(int x1, int y1, int bound,int stop)
         {
+            //our exit condition (we stop looping when...
             if (x1 > stop) return;
 
             GetColor();
             //Debug.WriteLine($"{x1},{y1} {bound} {stop}");
             DrawBox(x1, y1, bound);
-            Boxes(x1 + 1, y1 + 1, bound - 2, stop);
 
+            Boxes(x1 + 1, y1 + 1, bound - 2, stop);//recursively call Boxes
+
+            //only get here when the exit condition has happened
             Console.BackgroundColor = ConsoleColor.Black;
             DrawBox(x1, y1, bound);
         }
