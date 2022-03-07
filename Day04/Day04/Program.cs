@@ -42,7 +42,30 @@ namespace Day04
 
             //OR, do with 1 line
             string fileText = File.ReadAllText(fileName);//opens,read,closes the file
+
+            fileName = "bats.csv";
+            ReadData(fileName);
             #endregion
+        }
+
+        static void ReadData(string filePath)
+        {
+            char delimiter = '?';
+            string fileData = File.ReadAllText(filePath);
+            string[] data = fileData.Split(delimiter);
+            List<int> nums = new List<int>();
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (int.TryParse(data[i], out int number))
+                {
+                    nums.Add(number);
+                }
+            }
+            foreach (var item in nums)
+            {
+                Console.WriteLine(item);
+            }
+
         }
         static void WriteData(string filePath)
         {
