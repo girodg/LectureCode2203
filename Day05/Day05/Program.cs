@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading;
 
 namespace Day05
@@ -8,6 +10,21 @@ namespace Day05
     {
         static void Main(string[] args)
         {
+
+            int[] numbers = new int[] { 13, 7, 1, 5, 10, 42 };
+            Print(numbers);
+            Swap(numbers, 1, 2);
+            Print(numbers);
+
+            List<int> nums = numbers.ToList();
+            Split(nums);
+
+            string s1 = "Batman", s2 = "Aquaman";
+            int compResult = s1.CompareTo(s2);
+            if (compResult == 0) Console.WriteLine($"{s1} EQUALS {s2}");
+            else if(compResult > 0) Console.WriteLine($"{s1} GREATER THAN {s2}");
+            else if (compResult < 0) Console.WriteLine($"{s1} LESS THAN {s2}");
+
             #region Recursion
             Console.ReadKey();
             Console.CursorVisible = false;
@@ -15,7 +32,7 @@ namespace Day05
             int bound = Math.Min(Console.WindowHeight, Console.WindowWidth);
             int x1 = 0, y1 = 0;
 
-            Boxes(x1, y1, bound - 1, bound / 2); 
+            Boxes(x1, y1, bound - 1, bound / 2);
             #endregion
 
             Console.ResetColor();
@@ -23,6 +40,40 @@ namespace Day05
             Console.ReadKey();
             Console.CursorVisible = true;
         }
+
+        private static void Split(List<int> nums)
+        {
+            List<int> left = new List<int>();
+            List<int> right = new List<int>();
+            int mid = nums.Count / 2;
+            for (int i = 0; i < nums.Count; i++)
+            {
+                if(i < mid) left.Add(nums[i]);
+                else        right.Add(nums[i]);
+            }
+            Console.WriteLine("--------LEFT------");
+            foreach (var item in left)
+                Console.WriteLine(item);
+            Console.WriteLine("--------RIGHT------");
+            foreach (var item in right)
+                Console.WriteLine(item);
+        }
+
+        private static void Print(int[] numbers)
+        {
+            foreach (var item in numbers)
+                Console.Write($"{item} ");
+            Console.WriteLine();
+        }
+
+        #region Sorting Methods
+        static void Swap(int[] nums, int ndx1, int ndx2)
+        {
+            int temp = nums[ndx1];
+            nums[ndx1] = nums[ndx2];
+            nums[ndx2] = temp;
+        }
+        #endregion
 
         #region Recursion
         static Random randy = new Random();
