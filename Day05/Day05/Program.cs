@@ -18,6 +18,18 @@ namespace Day05
 
             List<int> nums = numbers.ToList();
             Split(nums);
+            int number = 42;
+            int indexOf = LinearSearch(nums, number);
+            if(indexOf != -1)
+                Console.WriteLine($"{number} is found at index {indexOf}");
+            else
+                Console.WriteLine($"{number} was not found."); 
+            number = 100;
+            indexOf = LinearSearch(nums, number);
+            if (indexOf != -1)
+                Console.WriteLine($"{number} is found at index {indexOf}");
+            else
+                Console.WriteLine($"{number} was not found.");
 
             string s1 = "Batman", s2 = "Aquaman";
             int compResult = s1.CompareTo(s2);
@@ -39,6 +51,20 @@ namespace Day05
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
             Console.CursorVisible = true;
+        }
+
+        static int LinearSearch(List<int> numsToSearch, int numberToFind)
+        {
+            int foundIndex = -1;
+            for (int i = 0; i < numsToSearch.Count; i++)
+            {
+                if (numberToFind == numsToSearch[i])
+                {
+                    foundIndex = i;
+                    break;
+                }
+            }
+            return foundIndex;
         }
 
         private static void Split(List<int> nums)
