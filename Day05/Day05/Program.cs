@@ -8,19 +8,23 @@ namespace Day05
     {
         static void Main(string[] args)
         {
+            #region Recursion
             Console.ReadKey();
             Console.CursorVisible = false;
             //Method(5);
             int bound = Math.Min(Console.WindowHeight, Console.WindowWidth);
             int x1 = 0, y1 = 0;
 
-            Boxes(x1, y1, bound - 1, bound / 2);
+            Boxes(x1, y1, bound - 1, bound / 2); 
+            #endregion
 
             Console.ResetColor();
+            Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
             Console.CursorVisible = true;
         }
 
+        #region Recursion
         static Random randy = new Random();
         private static void Boxes(int x1, int y1, int bound,int stop)
         {
@@ -51,7 +55,7 @@ namespace Day05
             Horizontal(x1, y1 + bound, x1 + bound);
             Vertical(x1, y1, y1 + bound);
             Vertical(x1 + bound, y1, y1 + bound);
-            Thread.Sleep(50);
+            Thread.Sleep(50);//to slow down the drawing
         }
 
         private static void Vertical(int x1, int y1, int y2)
@@ -79,5 +83,6 @@ namespace Day05
                 Console.WriteLine(i);
             }
         }
+        #endregion
     }
 }
