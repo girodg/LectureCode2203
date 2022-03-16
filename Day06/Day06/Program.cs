@@ -17,10 +17,10 @@ namespace Day06
 
             string[] options = { "1. Draw Crosshairs", "2. Draw Diagonals", "3. Draw Random", "4. Draw Shapes", "5. Exit" };
 
-            Shape box = new Shape();//calling the default constructor
+            Shape box = new Shape(Graphics.GetRandomPoints(5));//calling the default constructor
             box.Points = new List<Point>();//calls the set
 
-            Shape line = new Shape();
+            Shape line = new Shape(Graphics.GetRandomPoints(2));
             line.Points = new List<Point>();
             Console.WriteLine($"# of points in my shape: {box.Points.Count}");//calls the get
 
