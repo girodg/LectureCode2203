@@ -52,10 +52,13 @@ namespace Day06
                         shape.Draw(ConsoleColor.Green);
 
                         Line l1 = new Line(Graphics.GetRandomPoints(2));
+                        l1.Draw(ConsoleColor.Magenta);
 
                         //Upcasting: from derived to base
                         //ALWAYS safe
                         Shape myShape = l1;//copies the memory address of the object in the heap
+                        myShape.Draw(ConsoleColor.DarkCyan);
+
                         myShape = shape;
 
                         //Downcasting: from base to derived

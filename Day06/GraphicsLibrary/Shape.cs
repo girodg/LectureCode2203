@@ -45,7 +45,7 @@ namespace GraphicsLibrary
         #region Methods
         //an instance method
         //there is a HIDDEN parameter called 'Shape this'
-        public void Draw(ConsoleColor color)
+        public virtual void Draw(ConsoleColor color)
         {
             Console.BackgroundColor = color;
             foreach (var pt in Points)
