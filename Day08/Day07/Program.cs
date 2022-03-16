@@ -24,6 +24,7 @@ namespace Day07
             {
                 Console.WriteLine($"Dora says: {ex.Message}");
             }
+            backpack.PrintInventory();
 
             FantasyWeapon sting = new FantasyWeapon(WeaponRarity.Legendary, 100, 1000, 100000);
             int damage = sting.DoDamage();
