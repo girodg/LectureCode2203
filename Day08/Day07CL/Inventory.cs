@@ -49,10 +49,11 @@ namespace Day07CL
         {
             for (int i = 0; i < _items.Count; i++)
             {
-                FantasyWeapon fw = _items[i];
-                Console.WriteLine($"A level {fw.Level} {fw.Rarity} weapon that can do {fw.MaxDamage} and cost {fw.Cost}.");
-                if (fw is BowWeapon bow)
-                    Console.WriteLine($"\tIt also has {bow.ArrowCount} arrows and can hold {bow.ArrowCapacity} arrows.");
+                _items[i].Display();
+                //FantasyWeapon fw = _items[i];
+                //Console.WriteLine($"A level {fw.Level} {fw.Rarity} weapon that can do {fw.MaxDamage} and cost {fw.Cost}.");
+                //if (fw is BowWeapon bow)
+                //    Console.WriteLine($"\tIt also has {bow.ArrowCount} arrows and can hold {bow.ArrowCapacity} arrows.");
                 
             }
         }

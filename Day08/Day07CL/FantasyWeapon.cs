@@ -28,5 +28,10 @@ namespace Day07CL
             MaxDamage = maxDamage;
             Cost = cost;
         }
+
+        public virtual void Display()
+        {
+            Console.WriteLine($"A level {Level} {Rarity} weapon that can do {MaxDamage} and cost {Cost}.");
+        }
     }
 }
