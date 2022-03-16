@@ -30,11 +30,11 @@ namespace GraphicsLibrary
         }
         #endregion
         #region Constructors
-        public Shape()//default constructor. no parameters
-        {
-            //initialize the data
-            Points = new List<Point>();
-        }
+        //public Shape()//default constructor. no parameters
+        //{
+        //    //initialize the data
+        //    Points = new List<Point>();
+        //}
         public Shape(List<Point> points)
         {
             Points = points;//assign the parameter to the property/field

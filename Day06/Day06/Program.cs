@@ -51,6 +51,8 @@ namespace Day06
                         Shape shape = new Shape(points);
                         shape.Draw(ConsoleColor.Green);
 
+                        Line l1 = new Line(Graphics.GetRandomPoints(2));
+
                         //Inheritance/Polymorphism Lectures:
                         //Line: 2 pts. throw exception if not 2. Draw(): draws 1 line then calls base
                         //Rectangle: IsClosed. 4 pts if not closed (throw exception). 3pts if closed (throw exception). Draw(): draws shape then calls base
