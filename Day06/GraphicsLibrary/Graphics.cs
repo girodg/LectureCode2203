@@ -68,6 +68,17 @@ namespace GraphicsLibrary
             }
         }
 
+        public static List<Point> GetRandomPoints(int numberOfPoints)
+        {
+            List<Point> pts = new List<Point>();
+            Random randy = new Random();
+            for (int i = 0; i < numberOfPoints; i++)
+            {
+                pts.Add(new Point() { X = randy.Next(Console.WindowWidth), Y = randy.Next(Console.WindowHeight) });
+            }
+            return pts;
+        }
+
         private static void PlotLineLow(int x0, int y0, int x1, int y1)
         {
             int dx = x1 - x0;

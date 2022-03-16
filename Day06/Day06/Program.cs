@@ -23,7 +23,8 @@ namespace Day06
             Shape line = new Shape();
             line.Points = new List<Point>();
             Console.WriteLine($"# of points in my shape: {box.Points.Count}");//calls the get
-            int selection = 0;
+
+            int selection;
             do
             {
                 Input.ReadChoice("Choice: ", options, out selection);
@@ -46,6 +47,9 @@ namespace Day06
                         //Classes Lecture:
                         //Point: x,y
                         //Shape (base): list of pts, Color. Draw(): only draws pts
+                        List<Point> points = Graphics.GetRandomPoints(15);
+                        Shape shape = new Shape(points);
+                        shape.Draw(ConsoleColor.Green);
 
                         //Inheritance/Polymorphism Lectures:
                         //Line: 2 pts. throw exception if not 2. Draw(): draws 1 line then calls base
