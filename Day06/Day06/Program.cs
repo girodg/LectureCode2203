@@ -56,6 +56,27 @@ namespace Day06
                         //Upcasting: from derived to base
                         //ALWAYS safe
                         Shape myShape = l1;//copies the memory address of the object in the heap
+                        myShape = shape;
+
+                        //Downcasting: from base to derived
+                        //NOT SAFE! must cast to safety!
+                        //1. explicit cast
+                        try
+                        {
+                            Line l2 = (Line)myShape;
+                        }
+                        catch (Exception)
+                        {
+                        }
+                        //2. use the 'as' keyword
+                        //if myShape is NOT a line, will store NULL in l3
+                        Line l3 = myShape as Line;
+                        if(l3 != null)
+                        { }
+
+                        //3. use pattern matching
+                        if(myShape is Line l4)
+                        { }
 
                         //Inheritance/Polymorphism Lectures:
                         //Line: 2 pts. throw exception if not 2. Draw(): draws 1 line then calls base

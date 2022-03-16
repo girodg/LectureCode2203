@@ -9,15 +9,16 @@ namespace Day07
     {
         static void Main(string[] args)
         {
-            List<string> items = new List<string>()
-            {
-                "Map", "Shovel", "Pickaxe", "Helmet"
-            };
+            List<FantasyWeapon> items = new List<FantasyWeapon>();
+            items.Add(WeaponFactory.CreateWeapon(WeaponRarity.Common, 1, 10, 5));
+            items.Add(WeaponFactory.CreateWeapon(WeaponRarity.Legendary, 100, 1000, 100000));
+            items.Add(new BowWeapon(15,5,WeaponRarity.Rare, 50, 500, 50000));//upcasting
+            items.Add(new BowWeapon(15, 5, WeaponRarity.Uncommon, 20, 200, 10000));//upcasting
             Inventory backpack = new Inventory(4, items);
 
             try
             {
-                backpack.AddItem("Sword of black flame");
+                backpack.AddItem(new BowWeapon(15, 5, WeaponRarity.Uncommon, 20, 200, 10000));
             }
             catch (Exception ex)
             {
