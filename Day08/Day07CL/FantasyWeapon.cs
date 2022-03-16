@@ -17,6 +17,7 @@ namespace Day07CL
         public int DoDamage()
         {
             Random random = new Random();
+            //explicit cast
             int damage = (int)(random.NextDouble() * MaxDamage);
             return damage;
         }
