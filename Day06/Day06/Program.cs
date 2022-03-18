@@ -61,6 +61,19 @@ namespace Day06
 
                         myShape = shape;
 
+                        List<Point> rectPts = new List<Point>()
+                        {
+                            new Point(){X=5,Y=5},
+                            new Point(){X=15,Y=5},
+                            new Point(){X=15,Y=15},
+                            new Point(){X=5,Y=15}
+                        };
+                        Rectangle rect = new Rectangle(rectPts);
+                        rect.Draw(ConsoleColor.Blue); 
+                        
+                        rect = new Rectangle(Graphics.GetRandomPoints(4));
+                        rect.Draw(ConsoleColor.DarkYellow);
+
                         //Downcasting: from base to derived
                         //NOT SAFE! must cast to safety!
                         //1. explicit cast
