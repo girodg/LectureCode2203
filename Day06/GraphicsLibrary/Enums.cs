@@ -3,6 +3,6 @@ namespace GraphicsLibrary
 {
     public enum ShapeTypes
     {
-        Unknown, Linear, Boxy, Triangular
+        Unknown, Linear, Boxy, Triangular, Poly
     }
 }

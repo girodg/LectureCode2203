@@ -48,18 +48,18 @@ namespace Day06
                         //Point: x,y
                         //Shape (base): list of pts, Color. Draw(): only draws pts
                         List<Point> points = Graphics.GetRandomPoints(15);
-                        Shape shape = new Shape(points);
+                        IShape shape = Graphics.GenerateShape(ShapeTypes.Unknown);// new Shape(points);
                         shape.Draw(ConsoleColor.Green);
 
-                        Line l1 = new Line(Graphics.GetRandomPoints(2));
+                        IShape l1 = Graphics.GenerateShape(ShapeTypes.Linear);// new Line(Graphics.GetRandomPoints(2));
                         l1.Draw(ConsoleColor.Magenta);
 
                         //Upcasting: from derived to base
                         //ALWAYS safe
-                        Shape myShape = l1;//copies the memory address of the object in the heap
-                        myShape.Draw(ConsoleColor.DarkCyan);
+                        //Shape myShape = l1;//copies the memory address of the object in the heap
+                        //myShape.Draw(ConsoleColor.DarkCyan);
 
-                        myShape = shape;
+                        //myShape = shape;
 
                         List<Point> rectPts = new List<Point>()
                         {
@@ -68,31 +68,37 @@ namespace Day06
                             new Point(){X=15,Y=15},
                             new Point(){X=5,Y=15}
                         };
-                        Rectangle rect = new Rectangle(rectPts);
+                        IShape rect = new Rectangle(rectPts);
                         rect.Draw(ConsoleColor.Blue); 
                         
                         rect = new Rectangle(Graphics.GetRandomPoints(4));
                         rect.Draw(ConsoleColor.DarkYellow);
 
+                        rect = new Rectangle(Graphics.GetRandomBox());
+                        rect.Draw(ConsoleColor.Cyan);
+
+                        Polygon poly = new Polygon(Graphics.GetRandomPoints(10));
+                        poly.Draw(ConsoleColor.Red);
+
                         //Downcasting: from base to derived
                         //NOT SAFE! must cast to safety!
                         //1. explicit cast
-                        try
-                        {
-                            Line l2 = (Line)myShape;
-                        }
-                        catch (Exception)
-                        {
-                        }
-                        //2. use the 'as' keyword
-                        //if myShape is NOT a line, will store NULL in l3
-                        Line l3 = myShape as Line;
-                        if(l3 != null)
-                        { }
+                        //try
+                        //{
+                        //    Line l2 = (Line)myShape;
+                        //}
+                        //catch (Exception)
+                        //{
+                        //}
+                        ////2. use the 'as' keyword
+                        ////if myShape is NOT a line, will store NULL in l3
+                        //Line l3 = myShape as Line;
+                        //if(l3 != null)
+                        //{ }
 
-                        //3. use pattern matching
-                        if(myShape is Line l4)
-                        { }
+                        ////3. use pattern matching
+                        //if(myShape is Line l4)
+                        //{ }
 
                         //Inheritance/Polymorphism Lectures:
                         //Line: 2 pts. throw exception if not 2. Draw(): draws 1 line then calls base

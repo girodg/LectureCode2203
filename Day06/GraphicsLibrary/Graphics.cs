@@ -9,6 +9,26 @@ namespace GraphicsLibrary
     public static class Graphics
     {
 
+        public static IShape GenerateShape(ShapeTypes typeOfShape)
+        {
+            switch (typeOfShape)
+            {
+                case ShapeTypes.Unknown:
+                    return new Shape(Graphics.GetRandomPoints(10));
+                case ShapeTypes.Linear:
+                    return new Line(Graphics.GetRandomPoints(2));
+                case ShapeTypes.Boxy:
+                    return new Rectangle(Graphics.GetRandomBox());
+                case ShapeTypes.Triangular:
+                    return null;
+                case ShapeTypes.Poly:
+                    return new Polygon(Graphics.GetRandomPoints(10));
+                default:
+                    break;
+            }
+            return null;
+        }
+
         public static void DrawCrosshairs()
         {
             int x0 = 0, x1 = Console.WindowWidth / 2, x2 = Console.WindowWidth - 1;
@@ -76,6 +96,20 @@ namespace GraphicsLibrary
             {
                 pts.Add(new Point() { X = randy.Next(Console.WindowWidth), Y = randy.Next(Console.WindowHeight) });
             }
+            return pts;
+        }
+
+        public static List<Point> GetRandomBox()
+        {
+            List<Point> pts = new List<Point>();
+            Random randy = new Random();
+            Point p1 = new Point() { X=randy.Next(Console.WindowWidth), Y = randy.Next(Console.WindowHeight) };
+            pts.Add(p1);
+            int width = randy.Next(1,Console.WindowWidth - p1.X);
+            int height = randy.Next(1,Console.WindowHeight - p1.Y);
+            pts.Add(new Point() { X = p1.X + width, Y = p1.Y });
+            pts.Add(new Point() { X = p1.X + width, Y = p1.Y + height });
+            pts.Add(new Point() { X = p1.X, Y = p1.Y + height });
             return pts;
         }
 

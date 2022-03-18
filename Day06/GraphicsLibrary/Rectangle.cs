@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 namespace GraphicsLibrary
 {
     public class Rectangle : Shape
+        //Rectangle is-a Shape
     {
-        public bool IsClosed { get; set; }
+        public bool IsClosed { get; set; } //has-a property called IsClosed
         public Rectangle(List<Point> pts, bool isClosed = true) : base(pts)
         {
             IsClosed = isClosed;
-            //if ((IsClosed && Points.Count != 3) || (!IsClosed && Points.Count != 4))
             if(Points.Count != 4)
                 throw new Exception("Rectangles can only have 4 points.");
 
@@ -21,18 +21,7 @@ namespace GraphicsLibrary
         {
             Console.BackgroundColor = color;
             for (int i = 1; i < Points.Count; i++)
-            {
-                //if (IsClosed && i == Points.Count - 1)
-                //{
-                //    //draw from pt[2] to pt[0]
-                //}
-                //else
-                //{
-                //    //draw from pt[i-1] to pt[i]
-                //}
-
                 Graphics.PlotLine(Points[i-1].X, Points[i - 1].Y, Points[i].X, Points[i].Y);
-            }
 
             if (IsClosed)
             {

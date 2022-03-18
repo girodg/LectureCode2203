@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphicsLibrary
 {
-    public class Shape
+    public class Shape : IShape
     {
         #region Fields
         private List<Point> _pts = new List<Point>();
